@@ -2,13 +2,12 @@ const services = require("../services/sql.services");
 const formatter = require("../../Helpers/textFormatter");
 const errorHandling = require("../../Helpers/errorHandling");
 
-
 module.exports = {
   getProfile: (req, res) => {
     const query_variables = {
       table_name: "tbl_profile",
-      fields: "name, location, photo, account_fkid",
-      condition: `id = ${req.params.id}`,
+      fields: "id, name, bio,location, photo, account_fkid",
+      condition: `account_fkid = ${req.params.id}`,
     };
 
     services.get_w_condition(query_variables, (error, results) => {
@@ -69,3 +68,4 @@ module.exports = {
     });
   },
 };
+0;
